@@ -195,4 +195,14 @@ var Engine = function () {
     }
 
 
+    this.get_nb_player_color = function(player, color){
+        if(player==0) {
+            return (player1[color]);
+        }else{
+            return (player2[color]);
+        }
+
+
+    }
+
 };
