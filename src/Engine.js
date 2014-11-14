@@ -61,7 +61,7 @@ var Engine = function () {
         var r = true, d = 0;
         line = 0;
         while(r && line < 5){
-            console.log("Line"+line);
+            //console.log("Line"+line);
 
             column = 0;
             while( r && column < 5){
@@ -81,6 +81,14 @@ var Engine = function () {
 
         return r;
     }
+
+    this.select_color = function (color) {
+        var bool=false;
+
+        if(color==p_board[0][0] || color==p_board[0][5] || color==p_board[5][0] || color==p_board[5][5])
+        bool=true;
+        return  bool;
+    };
 
 
 };
