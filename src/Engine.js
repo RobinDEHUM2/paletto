@@ -11,6 +11,8 @@ var Engine = function () {
     //bleu = 3
     //rouge = 4
     //jaune =5
+
+    //vide = -1
     var nb_color = 6;
 
     //fin des variables
@@ -108,14 +110,80 @@ var Engine = function () {
     };
 
     this.is_empty = function(coord){
-        return(coord[0]);
+        var col;
+        var r = true;
+        switch(coord[0]){
+            case 'A' :
+                col = 0;
+                break;
+            case 'B' :
+                col = 1;
+                break;
+            case 'C' :
+                col = 2;
+                break;
+            case 'D' :
+                col = 3;
+                break;
+            case 'E' :
+                col = 4;
+                break;
+            case 'F' :
+                col = 5;
+                break;
+        }
+        if(p_board[col][coord[1]-1]>=0)
+        r = false;
+
+        return(r);
+
+    };
+
+    this.change_marble = function(coord, val){
+      var col;
+       var r;
+        switch(coord[0]){
+            case 'A' :
+                col = 0;
+                break;
+            case 'B' :
+                col = 1;
+                break;
+            case 'C' :
+                col = 2;
+                break;
+            case 'D' :
+                col = 3;
+                break;
+            case 'E' :
+                col = 4;
+                break;
+            case 'F' :
+                col = 5;
+                break;
+        }
+        r = p_board[col][coord[1]-1];
+        p_board[col][coord[1]-1] = val;
+
+        return r;
     };
 
     this.get_marble = function(coord){
 
-        if(current_player === 0){
+        if(!this.is_empty(coord)){
+            p_nb_marble--;
+            var val = this.change_marble(coord,-1);
 
+
+            if(current_player === 0){
+                player1[val]++;
+            }
+            else{
+                player2[val]++;
+            }
         }
+
+
     };
 
 
