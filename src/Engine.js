@@ -186,5 +186,13 @@ var Engine = function () {
 
     };
 
+    this.change_player = function(){
+        if(current_player === 0){
+            current_player = 1;
+        }else{
+            current_player = 0;
+        }
+    }
+
 
 };

@@ -21,3 +21,10 @@ MonTestCase.prototype.test_retire_un_pion=function(){
     p.get_marble("A5");
     assertTrue(p.nb_marbles()===35);
 };
+
+MonTestCase.prototype.test_retire_deux_pions=function(){
+    p.change_player();
+    p.get_marble("A1");
+    p.get_marble("F6");
+    assertTrue(p.get_nb_player_color(1,0)===2);
+};
