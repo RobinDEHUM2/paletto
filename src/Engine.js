@@ -60,6 +60,8 @@ var Engine = function () {
         p_board[5][4]=1;
         p_board[5][5]=0;
 
+        p_nb_marble = 36;
+
     };
 
     this.new_game = function(){
@@ -207,15 +209,19 @@ var Engine = function () {
     {
         var r;
         var bool=true;
-        for(var i=0;i < 6 && bool ;i++ )
-        {
-            if(player1[i] == 6) {
-                r = 1;
-                bool = false;
-            }
-            if(player2[i] == 6) {
-                r = 2;
-                bool = false;
+
+        if(p_nb_marble==0){
+            r = current_player +1;
+        }else {
+            for (var i = 0; i < 6 && bool; i++) {
+                if (player1[i] == 6) {
+                    r = 1;
+                    bool = false;
+                }
+                if (player2[i] == 6) {
+                    r = 2;
+                    bool = false;
+                }
             }
         }
         return r;
