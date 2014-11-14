@@ -23,40 +23,40 @@ var Engine = function () {
             p_board[i]= new Array(6);
         }
 
-        p_board[0][1]=1;
-        p_board[0][2]=2;
-        p_board[0][3]=3;
-        p_board[0][4]=4;
-        p_board[0][5]=2;
         p_board[0][0]=0;
+        p_board[0][1]=5;
+        p_board[0][2]=3;
+        p_board[0][3]=4;
+        p_board[0][4]=2;
+        p_board[0][5]=5;
+        p_board[1][0]=1;
         p_board[1][1]=2;
-        p_board[1][2]=1;
-        p_board[1][3]=4;
-        p_board[1][4]=5;
+        p_board[1][2]=5;
+        p_board[1][3]=0;
+        p_board[1][4]=1;
         p_board[1][5]=3;
-        p_board[1][0]=5;
-        p_board[2][0]=3;
-        p_board[2][1]=5;
+        p_board[2][0]=2;
+        p_board[2][1]=1;
         p_board[2][2]=3;
-        p_board[2][3]=2;
-        p_board[2][4]=0;
-        p_board[2][5]=4;
-        p_board[3][0]=4;
-        p_board[3][1]=0;
-        p_board[3][2]=4;
+        p_board[2][3]=4;
+        p_board[2][4]=5;
+        p_board[2][5]=0;
+        p_board[3][0]=3;
+        p_board[3][1]=4;
+        p_board[3][2]=2;
         p_board[3][3]=1;
-        p_board[3][4]=3;
-        p_board[3][5]=2;
-        p_board[4][0]=2;
-        p_board[4][1]=1;
-        p_board[4][2]=5;
-        p_board[4][3]=0;
+        p_board[3][4]=0;
+        p_board[3][5]=4;
+        p_board[4][0]=4;
+        p_board[4][1]=5;
+        p_board[4][2]=0;
+        p_board[4][3]=3;
         p_board[4][4]=5;
         p_board[4][5]=1;
-        p_board[5][0]=5;
+        p_board[5][0]=2;
         p_board[5][1]=3;
-        p_board[5][2]=0;
-        p_board[5][3]=4;
+        p_board[5][2]=4;
+        p_board[5][3]=2;
         p_board[5][4]=1;
         p_board[5][5]=0;
 
@@ -68,7 +68,7 @@ var Engine = function () {
             player2[i]=0;
         }
 
-
+        current_player = 0;
     };
 
 
@@ -192,17 +192,35 @@ var Engine = function () {
         }else{
             current_player = 0;
         }
-    }
+    };
 
 
     this.get_nb_player_color = function(player, color){
         if(player==0) {
             return (player1[color]);
-        }else{
+        }else {
             return (player2[color]);
         }
+    };
 
-
+    this.check_winner = function()
+    {
+        var r;
+        var bool=true;
+        for(var i=0;i < 6 && bool ;i++ )
+        {
+            if(player1[i] == 6) {
+                r = 1;
+                bool = false;
+            }
+            if(player2[i] == 6) {
+                r = 2;
+                bool = false;
+            }
+        }
+        return r;
     }
+
+
 
 };
