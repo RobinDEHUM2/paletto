@@ -1,6 +1,10 @@
 var Engine = function () {
     "use strict";
     var p_board = new Array(6), line, column;
+    var player1 = new Array(6);
+    var player2 = new Array(6);
+    var current_player = 0;
+    var p_nb_marble = 36;
     //black = 0;
     //vert= 1
     //blanc = 2
@@ -8,6 +12,10 @@ var Engine = function () {
     //rouge = 4
     //jaune =5
     var nb_color = 6;
+
+    //fin des variables
+
+
     this.new_board = function () {
         for(var i = 0; i < 6; i++){
             p_board[i]= new Array(6);
@@ -51,7 +59,16 @@ var Engine = function () {
         p_board[5][5]=0;
 
     };
-    this.new_board();
+
+    this.new_game = function(){
+        for(var i =0; i < 6 ; i++){
+            player1[i]=0;
+            player2[i]=0;
+        }
+
+
+    };
+
 
     this.nb_marbles = function () {
         return p_nb_marble;
@@ -80,7 +97,7 @@ var Engine = function () {
         }
 
         return r;
-    }
+    };
 
     this.select_color = function (color) {
         var bool=false;
@@ -88,6 +105,17 @@ var Engine = function () {
         if(color==p_board[0][0] || color==p_board[0][5] || color==p_board[5][0] || color==p_board[5][5])
         bool=true;
         return  bool;
+    };
+
+    this.is_empty = function(coord){
+        return(coord[0]);
+    };
+
+    this.get_marble = function(coord){
+
+        if(current_player === 0){
+
+        }
     };
 
 
